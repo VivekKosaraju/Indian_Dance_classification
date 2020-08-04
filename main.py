@@ -22,22 +22,11 @@ from tensorflow.keras.preprocessing import image
 
 
 
-abc=pd.read_csv('necess.csv')
-b=abc['target']
-b=np.array(b)
-from sklearn.preprocessing import LabelEncoder
-ld=LabelEncoder()
-b=ld.fit_transform(b)
-
-
-
 # Model saved with Keras model.save()
 MODEL_PATH ='model_VGG.h5'
 
 # Load your trained model
 model = load_model(MODEL_PATH)
-
-
 
 
 def model_predict(img_path, model):
@@ -48,10 +37,11 @@ def model_predict(img_path, model):
     img = np.expand_dims(img, axis=0)
     img = preprocess_input(img)
     X = np.array(img)
+    dances=['bharatanatyam','kathak','kathakali','kuchipudi','manipuri',
+            'mohiniyattam','sattriya']
     preds=model.predict_classes(X)
-    preds=ld.inverse_transform(preds)
-    preds=preds.tolist()
-    return preds[0]
+    preds=dances[preds[0]]
+    return preds
 
 
  
