@@ -1,0 +1,8 @@
+tensorflow==1.15.2
+numpy==1.15.2
+pandas==1.1.0
+pillow==7.1.0
+h5py==2.8.0
+keras==2.3.1
+streamlit==0.64.0
+werkzeug==0.15.3
